@@ -8,7 +8,7 @@ screen = pygame.display.set_mode((1270, 670))
 clock = pygame.time.Clock()
 running = True
 dt = 0
-speed = 300
+speed = 400
 
 player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 
