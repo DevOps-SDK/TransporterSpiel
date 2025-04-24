@@ -3,6 +3,7 @@ import pygame
 
 # pygame setup
 pygame.init()
+pygame.display.set_caption("Transporter Spiel")
 screen = pygame.display.set_mode((1270, 670))
 #background = pygame.image.load("bilder/sandTexture.png")
 clock = pygame.time.Clock()
@@ -13,10 +14,11 @@ speed = 400
 player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 
 # Spielfigure ubloading
-spielerfigur = pygame.image.load("bilder/biene.png")
+spielerfigur = pygame.image.load("bilder/truck.png")
+resized_image = pygame.transform.scale(spielerfigur,(100,100))
 
 hubschrauber2 = pygame.image.load("bilder/hubschrauber2.png")
-resized_image = pygame.transform.scale(hubschrauber2,(100,100))
+resized_image1 = pygame.transform.scale(hubschrauber2,(100,100))
 
 tankstelle = pygame.image.load("bilder/tankstelle.png")
 resized_image2 = pygame.transform.scale(tankstelle,(100,100))  
@@ -53,7 +55,7 @@ while running:
     if keys[pygame.K_d]:
         player_pos.x += speed * dt
     if keys[pygame.K_ESCAPE]:
-        pygame.quit()
+        running = False
 
     # Boundary checks
     if player_pos.x < 0:
@@ -67,11 +69,14 @@ while running:
 
    # pygame.draw.rect(screen, (255,255,255), (30, 20, 100, 200), 10 )
     
-    screen.blit(resized_image, (1000, 250))
+    #screen.blit(resized_image, (1000, 190))
+    screen.blit(resized_image, (player_pos.x, player_pos.y))
+    screen.blit(resized_image1, (1000, 250))
     screen.blit(resized_image2, (600, 569))   
     screen.blit(resized_image3, (1100, 400))
     screen.blit(resized_image4, (150, 100))
-    screen.blit(spielerfigur, (player_pos.x, player_pos.y))
+    #screen.blit(resized_image, (player_pos.x, player_pos.y))
+    #screen.blit(spielerfigur, (player_pos.x, player_pos.y))
     #screen.blit(resized_image5, (1270, 670))
     #screen.blit(background, (0, 0))
 
